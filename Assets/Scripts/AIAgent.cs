@@ -67,4 +67,33 @@ public class AIAgent : MonoBehaviour
             transform.position += (Vector3)directionToPlayer;
         }
     }
+    //while <---- loops until statement is false
+    //do while x 
+    //for   <---- 
+    //foreach x
+    public void Search()
+    {
+        // stores closest waypoint
+        int closestIndex = -1;
+        float closestDistance = float.MaxValue;
+        // loop for every waypoint
+        //      initializer     condition                  iterator
+        for (int index = 0; index <_waypoints.Length; index++)
+        //float index = 0;
+        //while (index<_waypoints.Length)
+        {
+            // distance to x waypoint
+            float currentDistance = Vector2.Distance(_waypoints[index].position, transform.position);
+            //if(distance to x < prev closest waypoint)
+            if (currentDistance < closestDistance)
+            {
+                //the new waypointis the closest
+                closestDistance = currentDistance;
+                closestIndex = index;
+            }
+            //index++; ; //increases index by 1
+        }
+        //_waypointindex == closestIndex;
+        _waypointindex = closestIndex;
+    }
 }

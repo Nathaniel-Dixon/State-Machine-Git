@@ -17,6 +17,12 @@ public class StateMachine : MonoBehaviour
         Flee,
         //Is alseep
         Sleep,
+        // Inraged
+        Inraged,
+        //Dead
+        Dead,
+        //Slipt
+        Slipt,
     }
 
     //The Ai's current state 
@@ -50,19 +56,19 @@ public class StateMachine : MonoBehaviour
 
         }
         //if (_state == State.Patrol)
-       // {
-            //StartCoroutine(PatrolState());
-       // }
+        // {
+        //StartCoroutine(PatrolState());
+        // }
     }
 
     private IEnumerator PatrolState()
     {
         Debug.Log("Patrol: Enter");
-
+        _aiAgent.Search();
         while (_state == State.Patrol) //continues till statement is false, looping eg x < 10 so would loop 10 times if x increases by 1 each time
         {
             _aiAgent.Patrol();
-            if(_aiAgent.IsPlayerInRange())
+            if (_aiAgent.IsPlayerInRange())
             {
                 _state = State.Combat;
             }
